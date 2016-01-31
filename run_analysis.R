@@ -1,4 +1,4 @@
-## Load data into corresponding objects and install/load plyr
+## Load data into corresponding objects
 # Load training data
 X_train <- read.csv("UCI HAR Dataset/train/X_train.txt", sep="", header=FALSE)
 Y_train <- read.csv("UCI HAR Dataset/train/Y_train.txt", sep="", header=FALSE)
@@ -10,6 +10,8 @@ subject_test <- read.csv("UCI HAR Dataset/test/subject_test.txt", sep="", header
 #Load features and activity labels
 activity_labels <- read.csv("UCI HAR Dataset/activity_labels.txt", sep="", header=FALSE)
 features <- read.csv("UCI HAR Dataset/features.txt", sep="", header=FALSE)
+
+##Step 1: Merge the training and the test sets to create one data set and label columns
 #Label columns of each data set
 colnames(activity_labels) = c("activityId","activityType")
 colnames(subject_train) = "subjectId"
@@ -17,10 +19,7 @@ colnames(X_train) = features[,2]
 colnames(Y_train) = "activityId"
 colnames(subject_test) = "subjectId"
 colnames(X_test) = features[,2]
-colnames(Y_test) = "activityId"
-
-##Step 1: Merge the training and the test sets to create one data set and label columns
-#Merge training data
+colnames(Y_test) = "activityId"#Merge training data
 training_data <- cbind(X_train, Y_train, subject_train)
 #Merge test data
 test_data <- cbind(X_test, Y_test, subject_test)
@@ -44,7 +43,6 @@ column_names <- gsub("^f","Frequency",column_names)
 column_names <- gsub("Freq$","Frequency",column_names)
 column_names <- gsub("Acc","Acceleration",column_names)
 column_names <- gsub("Mag","Magnitude",column_names)
-
 colnames(wanted_data) = column_names
 
 ##Step 5: Create a second, independent tidy data set with the average of each variable for each activity and each subject
