@@ -18,8 +18,8 @@ The observations were randomly partitioned by subject into two data sets - train
 
 **Signals and Variables**  
 
-Signal name | Reassigned 'tidy' name | Description  
-------------- | ------------- | -----------  
+Signal name | Reassigned 'tidy' name |    
+------------- | ------------- |  
 tBodyAcc | TimeBodyAcceleration | 
 tGravityAcc | TimeGravityAcceleration | 
 tBodyAccJerk | TimeBodyAccelerationJerk | 
